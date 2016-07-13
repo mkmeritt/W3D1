@@ -6,6 +6,55 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Image Detail View Controller-->
+        <scene sceneID="Rft-ng-z9h">
+            <objects>
+                <viewController id="fIl-xp-Gsz" customClass="ImageDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ily-KU-ZEx"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pml-nQ-kSF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1rt-G3-jaK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AZp-Ns-uUJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b8B-aC-xCU">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="b8B-aC-xCU" firstAttribute="leading" secondItem="AZp-Ns-uUJ" secondAttribute="leading" id="CqO-eF-Kep"/>
+                                    <constraint firstAttribute="bottom" secondItem="b8B-aC-xCU" secondAttribute="bottom" id="DcE-we-IYm"/>
+                                    <constraint firstItem="b8B-aC-xCU" firstAttribute="top" secondItem="AZp-Ns-uUJ" secondAttribute="top" id="H9p-n0-yJo"/>
+                                    <constraint firstItem="b8B-aC-xCU" firstAttribute="centerY" secondItem="AZp-Ns-uUJ" secondAttribute="centerY" id="Mpj-8U-F0e"/>
+                                    <constraint firstAttribute="trailing" secondItem="b8B-aC-xCU" secondAttribute="trailing" id="Zxn-0B-zVY"/>
+                                    <constraint firstItem="b8B-aC-xCU" firstAttribute="centerX" secondItem="AZp-Ns-uUJ" secondAttribute="centerX" id="r6z-TI-nDr"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="fIl-xp-Gsz" id="Wta-kE-I6S"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AZp-Ns-uUJ" firstAttribute="leading" secondItem="1rt-G3-jaK" secondAttribute="leadingMargin" constant="-20" id="56w-xS-B9T"/>
+                            <constraint firstItem="AZp-Ns-uUJ" firstAttribute="top" secondItem="1rt-G3-jaK" secondAttribute="topMargin" id="RfH-Zt-oTj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AZp-Ns-uUJ" secondAttribute="trailing" constant="-20" id="jHd-Yk-1BR"/>
+                            <constraint firstItem="Pml-nQ-kSF" firstAttribute="top" secondItem="AZp-Ns-uUJ" secondAttribute="bottom" id="y9u-1n-LVa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imgView" destination="b8B-aC-xCU" id="HW0-N7-kPD"/>
+                        <outlet property="scrollView" destination="AZp-Ns-uUJ" id="mam-eF-azb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mLL-zF-tSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1816" y="430"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -18,9 +67,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ss2-Ya-7e7">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ss2-Ya-7e7">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="4ge-OV-cPr">
+                                        <rect key="frame" x="281" y="498" width="39" height="37"/>
+                                        <color key="pageIndicatorTintColor" red="0.42480550247715776" green="0.59346337040905861" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </pageControl>
+                                </subviews>
                                 <color key="backgroundColor" red="0.17727659073016389" green="0.14688639893029065" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="4ge-OV-cPr" firstAttribute="centerX" secondItem="Ss2-Ya-7e7" secondAttribute="centerX" id="nxV-y5-jka"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="DeV-lY-RMe"/>
                                 </connections>
@@ -34,13 +92,16 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Ss2-Ya-7e7" secondAttribute="trailing" constant="-20" id="iHp-33-Z2P"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="fOv-xG-LsQ"/>
                     <connections>
+                        <outlet property="pageCtrl" destination="4ge-OV-cPr" id="DUI-J2-1yk"/>
                         <outlet property="scrollView" destination="Ss2-Ya-7e7" id="XHa-Dg-fqb"/>
+                        <segue destination="fIl-xp-Gsz" kind="show" identifier="ShowDetail" id="C29-Ub-vIQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="295" y="436"/>
+            <point key="canvasLocation" x="1107" y="436"/>
         </scene>
     </scenes>
 </document>
